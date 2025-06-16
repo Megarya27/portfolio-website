@@ -20,6 +20,14 @@ const projects: Project[] = [
     link: "https://aspireai-megarya27s-projects.vercel.app/",
     github: "https://github.com/Megarya27/aspireai",
   },
+  {
+    title: "CyberGuard",
+    description: "Advanced AI-powered phishing detection that analyzes email content, identifies sophisticated threats, and provides clear, actionable security guidance — no cybersecurity degree required",
+    technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+    image: "/CyberGuard.png",
+    link: "https://phish-me-not-ai-detect-main.vercel.app/",
+    github: "https://github.com/Megarya27/phish-me-not-ai-detect-main",
+  }
   //  more projects to add here
 ];
 

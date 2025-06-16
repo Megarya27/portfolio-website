@@ -7,7 +7,7 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { HiMenu, HiX } from "react-icons/hi";
+
 
 export const FloatingNav = ({
   navItems,
