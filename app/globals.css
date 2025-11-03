@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    --neon-green: #00ff00;
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -32,6 +33,7 @@
   }
 
   .dark {
+    --neon-green: #00ff00;
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
@@ -76,30 +78,105 @@
   .cursor-outline {
     width: 10px;
     height: 10px;
-    border: 2px solid #00ff00;
+    border: 2px solid var(--neon-green);
     position: fixed;
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
     transition: transform 0.1s ease;
-    box-shadow: 0 0 10px #00ff00, inset 0 0 5px #00ff00;
+    box-shadow: 0 0 10px var(--neon-green), inset 0 0 5px var(--neon-green);
     animation: cursorGlitch 1.5s infinite;
   }
 
   /* Hover animation */
   .cursor-outline.hover {
     transform: scale(1.5);
-    background-color: rgba(0, 255, 0, 0.1);
+    background-color: rgba(0, 255, 0, 0.08);
+    box-shadow: 0 0 18px var(--neon-green), inset 0 0 8px var(--neon-green);
   }
 
   .icon-hover {
-    color: #00ff00;
-    transition: color 0.3s ease;
+    color: var(--neon-green);
+    transition: color 0.3s ease, transform 0.18s ease;
+    will-change: transform, color;
   }
 
   .icon-hover:hover {
     color: #fffdfd;
+    transform: translateY(-2px) scale(1.06);
   }
+
+  /* matrix rain (subtle) */
+  @keyframes matrixFloat {
+    0% { transform: translateY(-10%); opacity: 0.1 }
+    50% { transform: translateY(0%); opacity: 0.6 }
+    100% { transform: translateY(10%); opacity: 0.1 }
+  }
+
+  .matrix-column > div { animation: matrixFloat 3.5s ease-in-out infinite; }
 
 
 }
+
+/* Hacker aesthetic utilities */
+@layer utilities {
+  /* moving scanlines overlay */
+  @keyframes scanlineMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 40px; }
+  }
+
+  .scanline-overlay {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0,255,0,0.02) 0px,
+      rgba(0,255,0,0.02) 1px,
+      transparent 1px,
+      transparent 6px
+    ), linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.35));
+    mix-blend-mode: overlay;
+    animation: scanlineMove 6s linear infinite;
+    background-size: auto 40px, cover;
+  }
+
+  /* neon borders and glows */
+  .neon-border {
+    border: 1px solid var(--neon-green);
+    box-shadow: 0 0 12px rgba(0,255,0,0.08), inset 0 0 6px rgba(0,255,0,0.04);
+  }
+
+  .neon-glow {
+    box-shadow: 0 6px 24px rgba(0,255,0,0.08), 0 0 10px rgba(0,255,0,0.06);
+  }
+
+  /* terminal header dots grouping */
+  .terminal-dots > span { display: inline-block; width: 0.6rem; height: 0.6rem; margin-right: 0.4rem; border-radius: 9999px; }
+  .terminal-dots .dot-red { background: rgba(255,0,0,0.95); box-shadow: 0 0 8px rgba(255,0,0,0.12);} 
+  .terminal-dots .dot-yellow { background: rgba(255,200,0,0.95); box-shadow: 0 0 8px rgba(255,200,0,0.08);} 
+  .terminal-dots .dot-green { background: var(--neon-green); box-shadow: 0 0 8px rgba(0,255,0,0.12);} 
+
+  /* subtle scanline on text for retro CRT feel */
+  .scanline-text {
+    background-image: linear-gradient(180deg, rgba(0,255,0,0.06) 0%, rgba(0,255,0,0.02) 50%, transparent 51%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+/* modal/flicker animations for hacker vibe */
+@keyframes neonPulse {
+  0% { box-shadow: 0 6px 20px rgba(0,255,0,0.04); }
+  50% { box-shadow: 0 8px 28px rgba(0,255,0,0.08); }
+  100% { box-shadow: 0 6px 20px rgba(0,255,0,0.04); }
+}
+
+.neon-pulse { animation: neonPulse 3s ease-in-out infinite; }
+
+@keyframes modalFlicker {
+  0% { opacity: 0.98 }
+  50% { opacity: 0.995 }
+  100% { opacity: 0.98 }
+}
+
+.modal-flicker { animation: modalFlicker 2.2s linear infinite; }
+

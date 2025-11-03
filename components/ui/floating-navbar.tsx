@@ -49,8 +49,31 @@ export const FloatingNav = ({
     }
   });
 
-  const handleScroll = (id: string) => {
-    const element = document.getElementById(id);
+  const handleScroll = (link: string) => {
+    // Route navigation
+    if (link.startsWith("/")) {
+      window.location.href = link;
+      return;
+    }
+
+    // In-page anchor like "#section"
+    if (link.startsWith("#")) {
+      const id = link.slice(1);
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+      return;
+    }
+
+    // Absolute URL (open new tab)
+    if (link.startsWith("http://") || link.startsWith("https://")) {
+      window.open(link, "_blank");
+      return;
+    }
+
+    // Fallback: try to find element by id
+    const element = document.getElementById(link);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -76,7 +99,7 @@ export const FloatingNav = ({
           {navItems.map((navItem, idx) => (
             <button
               key={`link-${idx}`}
-              onClick={() => handleScroll(navItem.link.substring(1))} // Remove "#" and pass the ID
+              onClick={() => handleScroll(navItem.link)}
               className={cn(
                 "flex max-w-fit rounded-full items-center pr-2 pl-8 py-2 justify-center space-x-4 text-xl hover:text-white dark:text-green-500 dark:hover:text-white"
               )}

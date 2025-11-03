@@ -8,7 +8,7 @@ const Contact = () => {
       <div className="max-w-6xl mx-auto px-4 ">
         <h2 className="text-3xl font-mono font-bold text-center mb-12
                      text-transparent bg-clip-text bg-gradient-to-tl 
-                     from-[#00ff00] via-[#00cc00] to-[#008000]">
+                     from-neonGreen via-neonGreen-300 to-neonGreen-700">
           &lt;/CONTACT&gt;
         </h2>
 
@@ -20,7 +20,7 @@ const Contact = () => {
             className="group"
           >
             <div className="rounded-full p-2 border bg-gradient-to-bl 
-                     from-[#00ff00] via-[#00cc00] to-[#008000] hover:bg-black group-hover:bg-black">
+                     from-neonGreen via-neonGreen-300 to-neonGreen-700 hover:bg-black group-hover:bg-black">
             <FaGithub className="w-8 h-8 text-black transition-all duration-300   
                                 group-hover:scale-110 group-hover:text-white" />
                                 </div>
@@ -31,7 +31,7 @@ const Contact = () => {
             className="group"
           >
             <div className="rounded-full p-2 border bg-gradient-to-bl 
-                     from-[#00ff00] via-[#00cc00] to-[#008000] hover:bg-black group-hover:bg-black">
+                     from-neonGreen via-neonGreen-300 to-neonGreen-700 hover:bg-black group-hover:bg-black">
             <MdEmail className="w-8 h-8 text-black transition-all duration-300   
                                 group-hover:scale-110 group-hover:text-white" />
                                 </div>
@@ -44,7 +44,7 @@ const Contact = () => {
             className="group"
           >
             <div className="rounded-full p-2 border bg-gradient-to-bl 
-                     from-[#00ff00] via-[#00cc00] to-[#008000] hover:bg-black group-hover:bg-black">
+                     from-neonGreen via-neonGreen-300 to-neonGreen-700 hover:bg-black group-hover:bg-black">
             <FaLinkedin className="w-8 h-8 text-black transition-all duration-300   
                                 group-hover:scale-110 group-hover:text-white" />
                                 </div>
@@ -54,11 +54,11 @@ const Contact = () => {
         {/* Footer */}
         <footer className="text-center mt-96">
           <p className="text-transparent bg-clip-text bg-gradient-to-tl 
-                     from-[#00ff00] via-[#00cc00] to-[#008000] text-sm">
+                     from-neonGreen via-neonGreen-300 to-neonGreen-700 text-sm">
             Built with Next.js, TypeScript & Tailwind CSS
           </p>
           <p className="text-transparent bg-clip-text bg-gradient-to-tl 
-                     from-[#00ff00] via-[#00cc00] to-[#008000] text-sm mt-2">
+                     from-neonGreen via-neonGreen-300 to-neonGreen-700 text-sm mt-2">
             © {new Date().getFullYear()} ARYA CHIKMAGALUR. All rights reserved.
           </p>
         </footer>

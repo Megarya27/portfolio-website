@@ -23,6 +23,9 @@ const Hero = () => {
       {/* VantaNetEffect in the background */}
       <VantaNetEffect containerId="vanta-container" />
 
+      {/* subtle scanline overlay */}
+      <div aria-hidden className="absolute inset-0 pointer-events-none z-0 scanline-overlay" />
+
       {/* Floating Navigation */}
       <FloatingNav
         navItems={[
@@ -30,20 +33,21 @@ const Hero = () => {
           { name: "About", link: "#about" },
           { name: "Projects", link: "#projects" },
           { name: "Contact", link: "#contact" },
+          { name: "Blog", link: "/blog" },
         ]}
       />
 
 <div className="flex  items-center flex-col justify-center px-4 md:px-16 py-8 w-full h-full">
   <p className="pt-5 text-lg md:text-lg font-mono font-bold tracking-tight 
-                text-transparent bg-clip-text bg-gradient-to-tl from-[#00ff00] via-[#00cc00] to-[#008000]">
+                text-transparent bg-clip-text bg-gradient-to-tl from-neonGreen via-neonGreen-300 to-neonGreen-700">
     HI, MY NAME IS
   </p>
   <h2 className="pt-7 text-7xl md:text-7xl font-mono font-bold tracking-tight 
-                text-transparent bg-clip-text bg-gradient-to-tl from-[#00ff00] via-[#00cc00] to-[#008000]">
+                text-transparent bg-clip-text bg-gradient-to-tl from-neonGreen via-neonGreen-300 to-neonGreen-700">
     ARYA!
   </h2>
   <motion.h2 
-            className="pt-8 md:text-xl sm:text-lg  font-mono font-bold text-transparent bg-clip-text bg-gradient-to-tl from-[#00ff00] via-[#00cc00] to-[#008000] hover:scale-105 transition-transform cursor-default mt-4"
+            className="pt-8 md:text-xl sm:text-lg  font-mono font-bold text-transparent bg-clip-text bg-gradient-to-tl from-neonGreen via-neonGreen-300 to-neonGreen-700 hover:scale-105 transition-transform cursor-default mt-4"
             variants={itemVariants}
           >
             <Typewriter

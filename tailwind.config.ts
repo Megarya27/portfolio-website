@@ -11,7 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        neonGreen: "#00ff00",
+        neonGreen: {
+          DEFAULT: '#00ff00',
+          300: '#66ff66',
+          500: '#00ff00',
+          700: '#00cc00',
+        },
       },
     },
   },
