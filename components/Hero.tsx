@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Vortex } from "@/components/ui/vortex";
+// import { Vortex } from './ui/vortex'
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import { FloatingNav } from "./ui/floating-navbar";

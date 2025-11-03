@@ -1,10 +1,7 @@
 "use client";
 import React from "react";
-import { Vortex } from "@/components/ui/vortex";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-
-
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -30,20 +27,16 @@ const aboutMeText =
 
 export default function About() {
   return (
-    
     <motion.div
       className="min-h-60 justify-center relative bg-black overflow-visible flex"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
-      
       <div
         id="about"
         className="flex flex-col bg-transparent  md:flex-row mb-28 md:px-16  w-2/3 h-full"
-         >
-      
-      
+      >
         {/* Text Section */}
         <div className="flex flex-col md:text-3xl sm:text-2xl p-10 rounded-xl justify-center  border shadow-2xl border-green-500 border-opacity-30 transition-all duration-300">
           <motion.h2
@@ -60,7 +53,7 @@ export default function About() {
               delaySpeed={1000}
             />
           </motion.h2>
-          
+
           <motion.p
             className="pt-3  text-white  md:text-lg sm:text-xl font-mono leading-relaxed flex flex-wrap contain-none"
             variants={containerVariants}
@@ -84,10 +77,7 @@ export default function About() {
             variants={containerVariants}
           />
         </div>
-        
       </div>
-
-      
     </motion.div>
   );
 }

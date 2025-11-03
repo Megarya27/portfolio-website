@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import Image from "next/image";
 
 interface Project {
   title: string;
@@ -32,8 +32,6 @@ const projects: Project[] = [
 ];
 
 const Projects = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   return (
     <section id="projects" className="py-20 px-4 max-w-7xl mx-auto">
       <motion.h2
@@ -57,9 +55,11 @@ const Projects = () => {
           >
             <div className="bg-gradient-to-tr from-[#002200] via-[#003300] to-[#00ff00] rounded-xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl">
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
+                  width={500}
+                  height={300}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

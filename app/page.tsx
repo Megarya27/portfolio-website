@@ -1,8 +1,6 @@
-import Image from "next/image";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
-import { TracingBeam } from "@/components/ui/tracing-beam";
 import CustomCursor from "@/components/CustomCursor";
 import Skills from "@/components/Skills";
 import { Vortex } from "@/components/ui/vortex";
