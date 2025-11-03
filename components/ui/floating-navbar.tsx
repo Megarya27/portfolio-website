@@ -22,7 +22,7 @@ export const FloatingNav = ({
 }) => {
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(true); // Initially visible
-  const [menuOpen, setMenuOpen] = useState(false); // State for mobile menu toggle
+  // mobile menu state removed (not used)
   const [isMobile, setIsMobile] = useState(false); // State to track screen size
 
   useEffect(() => {

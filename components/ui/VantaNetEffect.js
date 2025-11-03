@@ -43,11 +43,11 @@ const VantaNetEffect = ({ containerId }) => {
       {/* Add scripts for Three.js and Vanta */}
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
       />
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
       />
       
       <div
