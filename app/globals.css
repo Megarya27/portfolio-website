@@ -180,3 +180,59 @@
 
 .modal-flicker { animation: modalFlicker 2.2s linear infinite; }
 
+  /* hero-specific micro-animations */
+  @keyframes floatY {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+  }
+
+  @keyframes glitchTop {
+    0% { transform: translate(0, 0); clip-path: inset(0 0 0 0); }
+    20% { transform: translate(-2px, -2px); clip-path: inset(0 0 60% 0); }
+    40% { transform: translate(2px, -1px); clip-path: inset(40% 0 0 0); }
+    60% { transform: translate(-1px, 1px); clip-path: inset(0 0 60% 0); }
+    80% { transform: translate(1px, 2px); clip-path: inset(50% 0 0 0); }
+    100% { transform: translate(0, 0); clip-path: inset(0 0 0 0); }
+  }
+
+  @keyframes glitchBottom {
+    0% { transform: translate(0, 0); clip-path: inset(0 0 0 0); }
+    20% { transform: translate(2px, 2px); clip-path: inset(60% 0 0 0); }
+    40% { transform: translate(-2px, 1px); clip-path: inset(0 0 40% 0); }
+    60% { transform: translate(1px, -1px); clip-path: inset(60% 0 0 0); }
+    80% { transform: translate(-1px, -2px); clip-path: inset(0 0 50% 0); }
+    100% { transform: translate(0, 0); clip-path: inset(0 0 0 0); }
+  }
+
+  /* simple left-to-right scanline used in other places */
+  @keyframes scan {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 40px; }
+  }
+
+  /* tiny floating particles */
+  .hero-particle { width: 6px; height: 6px; border-radius: 9999px; background: var(--neon-green); box-shadow: 0 0 8px rgba(0,255,0,0.12); opacity: 0.9; }
+  .animate-float { animation: floatY 4s ease-in-out infinite; }
+
+  /* glitch text effect using pseudo elements */
+  .glitch { position: relative; display: inline-block; }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0.9;
+  }
+  .glitch::before { color: rgba(0,255,150,0.85); animation: glitchTop 2.6s linear infinite; }
+  .glitch::after { color: rgba(0,200,255,0.7); animation: glitchBottom 3.1s linear infinite; }
+
+  /* matrix columns - subtle falling characters */
+  .matrix-column { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace; color: rgba(0,255,0,0.06); font-size: 12px; line-height: 14px; }
+  .matrix-column span { display: block; transform: translateY(-10%); animation: floatY 3.6s ease-in-out infinite; }
+

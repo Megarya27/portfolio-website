@@ -33,6 +33,7 @@ const Hero = () => {
           { name: "About", link: "#about" },
           { name: "Projects", link: "#projects" },
           { name: "Contact", link: "#contact" },
+
           { name: "Blog", link: "/blog" },
         ]}
       />
