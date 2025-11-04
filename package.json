@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-  "framer-motion": "^12.1.0",
-  "motion-dom": "^12.1.0",
-  "motion-utils": "^12.1.0",
+    "framer-motion": "^12.1.0",
+    "motion-dom": "^12.1.0",
+    "motion-utils": "^12.1.0",
     "next": "^15.3.1",
     "particlesjs": "^2.2.3",
     "react": "^19.1.0",
@@ -22,8 +22,7 @@
     "react-simple-typewriter": "^5.0.1",
     "simplex-noise": "^4.0.3",
     "tailwind-merge": "^2.6.0",
-    "three": "^0.172.0",
-    "website": "file:"
+    "three": "^0.172.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
