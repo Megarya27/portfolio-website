@@ -15,7 +15,7 @@ export default function TerminalEmulator({ className = "" }: { className?: strin
   ]);
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<string[]>([]);
-  const [histIndex, setHistIndex] = useState<number | null>(null);
+  const histIndexRef = useRef<number | null>(null);
   const ref = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -32,8 +32,8 @@ export default function TerminalEmulator({ className = "" }: { className?: strin
     const text = raw.trim();
     if (!text) return;
     setLines((l) => [...l, `> ${text}`]);
-    setHistory((h) => [...h, text]);
-    setHistIndex(null);
+  setHistory((h) => [...h, text]);
+  histIndexRef.current = null;
 
     // handle built-in commands
     if (text === "clear") {
@@ -65,20 +65,16 @@ export default function TerminalEmulator({ className = "" }: { className?: strin
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       if (history.length === 0) return;
-      setHistIndex((idx) => {
-        const next = idx === null ? history.length - 1 : Math.max(0, idx - 1);
-        setInput(history[next]);
-        return next;
-      });
+      const idx = histIndexRef.current === null ? history.length - 1 : Math.max(0, histIndexRef.current - 1);
+      histIndexRef.current = idx;
+      setInput(history[idx]);
     } else if (e.key === "ArrowDown") {
       e.preventDefault();
       if (history.length === 0) return;
-      setHistIndex((idx) => {
-        if (idx === null) return null;
-        const next = Math.min(history.length - 1, idx + 1);
-        setInput(history[next]);
-        return next;
-      });
+      if (histIndexRef.current === null) return;
+      const next = Math.min(history.length - 1, histIndexRef.current + 1);
+      histIndexRef.current = next;
+      setInput(history[next]);
     } else if (e.key === "Tab") {
       e.preventDefault();
       // simple tab completion
