@@ -88,7 +88,7 @@ export const FloatingNav = ({
         animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
         transition={{ duration: 0.4, ease: "easeInOut" }} // Smoother animation
         className={cn(
-          "fixed top-12 inset-x-0 mx-auto z-[5000] flex items-center justify-center space-x-4 font-mono pointer-events-auto",
+          "fixed top-6 inset-x-0 mx-auto z-[5000] flex items-center justify-center space-x-4 font-mono pointer-events-auto",
           className
         )}
       >

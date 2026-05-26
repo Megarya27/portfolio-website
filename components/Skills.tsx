@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from 'react';
 import { FaPython, FaJava, FaHtml5, FaNodeJs, FaReact } from 'react-icons/fa';
 import { SiNextdotjs, SiJavascript, SiTypescript, SiTailwindcss, SiPrisma, SiWireshark, SiCplusplus } from 'react-icons/si';
 import { GiPortculis } from 'react-icons/gi'; // for John The Ripper
@@ -10,6 +11,12 @@ import Marquee from "react-fast-marquee";
 
 
 const Skills = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <section className="relative bg-transparent">
       {/* cyber overlay */}
@@ -74,7 +81,7 @@ const Skills = () => {
           {/* subtle matrix column (visual only) */}
           <div className="absolute right-4 top-4 hidden md:block">
             <div className="text-neonGreen/40 font-mono text-xs leading-4 select-none opacity-70">
-              {Array.from({ length: 24 }).map((_, i) => (
+              {mounted && Array.from({ length: 24 }).map((_, i) => (
                 <div key={i} className={`animate-pulse ${i % 2 ? 'opacity-40' : 'opacity-60'}`}>0{Math.floor(Math.random()*9)}1{Math.floor(Math.random()*9)}</div>
               ))}
             </div>

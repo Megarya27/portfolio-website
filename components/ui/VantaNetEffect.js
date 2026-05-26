@@ -1,12 +1,15 @@
 "use client";
-import { useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Script from "next/script";
 
 const VantaNetEffect = ({ containerId }) => {
+  const [threeLoaded, setThreeLoaded] = useState(false);
+  const vantaEffectRef = useRef(null);
+
   useEffect(() => {
     const loadVanta = () => {
-      if (window.VANTA) {
-        window.VANTA.NET({
+      if (window.VANTA && window.THREE && !vantaEffectRef.current) {
+        vantaEffectRef.current = window.VANTA.NET({
           el: `#${containerId}`,
           mouseControls: true,
           touchControls: true,
@@ -22,11 +25,11 @@ const VantaNetEffect = ({ containerId }) => {
       }
     };
 
-    if (typeof window !== "undefined" && window.VANTA) {
+    if (typeof window !== "undefined" && window.VANTA && window.THREE) {
       loadVanta();
     } else {
       const interval = setInterval(() => {
-        if (window.VANTA) {
+        if (window.VANTA && window.THREE) {
           clearInterval(interval);
           loadVanta();
         }
@@ -34,7 +37,10 @@ const VantaNetEffect = ({ containerId }) => {
     }
 
     return () => {
-      if (window.VANTA && window.VANTA.current) window.VANTA.current.destroy();
+      if (vantaEffectRef.current) {
+        vantaEffectRef.current.destroy();
+        vantaEffectRef.current = null;
+      }
     };
   }, [containerId]);
 
@@ -44,11 +50,14 @@ const VantaNetEffect = ({ containerId }) => {
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
         strategy="afterInteractive"
+        onLoad={() => setThreeLoaded(true)}
       />
-      <Script
-        src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js"
-        strategy="afterInteractive"
-      />
+      {threeLoaded && (
+        <Script
+          src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js"
+          strategy="afterInteractive"
+        />
+      )}
       
       <div
         id={containerId}

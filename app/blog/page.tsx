@@ -242,10 +242,20 @@ Practicing offensive thinking helps prioritize controls that reduce attacker ROI
 ];
 
 import BlogListClient from "@/components/ui/BlogListClient";
+import { FloatingNav } from "@/components/ui/floating-navbar";
 
 export default function BlogPage() {
   return (
     <main className="min-h-screen bg-black py-24 relative">
+      <FloatingNav
+        navItems={[
+          { name: "Home", link: "/" },
+          { name: "About", link: "/#about" },
+          { name: "Projects", link: "/#projects" },
+          { name: "Contact", link: "/#contact" },
+          { name: "Blog", link: "/blog" },
+        ]}
+      />
       {/* subtle global scanline for the blog */}
       <div aria-hidden className="absolute inset-0 pointer-events-none scanline-overlay opacity-60" />
 

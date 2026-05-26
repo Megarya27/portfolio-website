@@ -14,6 +14,14 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "Wave Rentals",
+    description: "Sydney based Car rental service with car booking functionality and database to store car and booking data.",
+    technologies: ["Javascript", "Nextjs", "Tailwind CSS"],
+    image: "/IMG_20260512_081914_880.webp",
+    link: "https://waverentals.com.au/#/",
+    github: "https://github.com/Megarya27/",
+  },
+  {
     title: "AspireAI",
     description: "AspireAI - The AI-powered career coach that helps you craft the perfect resume, ace interviews, and stay ahead with industry trends. 🚀",
     technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
@@ -29,6 +37,7 @@ const projects: Project[] = [
     link: "https://phish-me-not-ai-detect-main.vercel.app/",
     github: "https://github.com/Megarya27/phish-me-not-ai-detect-main",
   }
+
   //  more projects to add here
 ];
 
@@ -45,12 +54,22 @@ const Projects = () => {
       id: "c1",
       name: "COMPTIA SECURITY +",
       issuer: "CompTIA",
-      date: "In progress",
-      credentialUrl: "",
+      date: "May 2026",
+      credentialUrl: "https://www.credly.com/badges/22e2271d-6f7e-4fb2-be0f-a39bdef9d505",
       // prefer user-provided PNG if available in public folder
       image: "/comptia_secplus.png",
-      status: "In Progress",
-      description: "Preparing certification materials and hands-on labs for Security+.",
+      status: "Obtained",
+      description: "Successfully obtained the CompTIA Security+ certification, validating core knowledge of cybersecurity principles, active threat response, and secure infrastructure design.",
+    },
+    {
+      id: "c3",
+      name: "Google IT Support Specialization",
+      issuer: "Google",
+      date: "May 2026",
+      credentialUrl: "https://www.coursera.org/account/accomplishments/specialization/certificate/ERZL2WRK2JXL",
+      image: "/google_logo.jpg",
+      status: "Obtained",
+      description: "Comprehensive professional IT Support credential covering fundamental troubleshooting, operating systems, system administration, computer networks, and security.",
     },
     {
       id: "c2",
@@ -61,7 +80,8 @@ const Projects = () => {
       image: "/sal1.png",
       status: "Coming Soon",
       description: "Structured attack labs (SAL1) — scheduled to complete soon.",
-    },
+    }
+
   ];
 
   return (
@@ -90,12 +110,12 @@ const Projects = () => {
             <div className="rounded-xl overflow-hidden shadow-2xl transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,255,0,0.08)] border border-neonGreen/10 bg-gradient-to-b from-black/80 via-black/60 to-black/90">
               {/* terminal window header */}
               <div className="flex items-center justify-between px-4 py-2 border-b border-green-600/10 bg-black/40">
-                    <div className="flex items-center gap-2 terminal-dots">
-                      <span className="dot-red" />
-                      <span className="dot-yellow" />
-                      <span className="dot-green" />
-                    </div>
-                  <div className="text-xs font-mono text-neonGreen/70">{project.title}</div>
+                <div className="flex items-center gap-2 terminal-dots">
+                  <span className="dot-red" />
+                  <span className="dot-yellow" />
+                  <span className="dot-green" />
+                </div>
+                <div className="text-xs font-mono text-neonGreen/70">{project.title}</div>
               </div>
 
               <div className="relative h-48 overflow-hidden">
@@ -189,13 +209,12 @@ const Projects = () => {
                 </div>
 
                 <div className="flex flex-col items-end">
-                  <div className={`px-2 py-1 rounded-full text-xs font-mono ${
-                    cert.status === "Coming Soon"
-                      ? "bg-gray-800 text-gray-300"
-                      : cert.status === "In Progress"
+                  <div className={`px-2 py-1 rounded-full text-xs font-mono ${cert.status === "Coming Soon"
+                    ? "bg-gray-800 text-gray-300"
+                    : cert.status === "In Progress"
                       ? "bg-yellow-900 text-yellow-300"
                       : "bg-green-900 text-green-300"
-                  }`}>{cert.status}</div>
+                    }`}>{cert.status}</div>
                   <div className="text-xs text-neonGreen/60 font-mono mt-1">{cert.date}</div>
                 </div>
               </div>
@@ -218,32 +237,37 @@ const Projects = () => {
                 const cert = certificates.find((c) => c.id === selectedCert)!;
                 return (
                   <div>
-                        <div className="flex items-start justify-between">
-                          <div>
-                            <h4 className="font-mono text-neonGreen text-lg">{cert.name}</h4>
-                            <div className="text-neonGreen/70 text-sm font-mono">{cert.issuer} • {cert.date}</div>
-                          </div>
-                          <div className="flex flex-col items-end gap-1">
-                            <div className={`px-2 py-1 rounded-full text-xs font-mono ${
-                              cert.status === "Coming Soon"
-                                ? "bg-gray-800 text-gray-300"
-                                : cert.status === "In Progress"
-                                ? "bg-yellow-900 text-yellow-300"
-                                : "bg-green-900 text-green-300"
-                            }`}>{cert.status}</div>
-                            <button onClick={() => setSelectedCert(null)} className="text-neonGreen/60">✕</button>
-                          </div>
-                        </div>
-                        <div className="mt-4 text-neonGreen/70 font-mono text-sm">
-                          {cert.description}
-                        </div>
-                        {cert.credentialUrl ? (
-                          <div className="mt-4">
-                            <a href={cert.credentialUrl} target="_blank" rel="noreferrer" className="text-neonGreen/90 font-mono underline">View credential</a>
-                          </div>
-                        ) : (
-                          <div className="mt-4 text-neonGreen/50 text-xs font-mono">{cert.status === "Coming Soon" ? "Credential coming soon." : "Work in progress — credential will be available soon."}</div>
-                        )}
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h4 className="font-mono text-neonGreen text-lg">{cert.name}</h4>
+                        <div className="text-neonGreen/70 text-sm font-mono">{cert.issuer} • {cert.date}</div>
+                      </div>
+                      <div className="flex flex-col items-end gap-1">
+                        <div className={`px-2 py-1 rounded-full text-xs font-mono ${cert.status === "Coming Soon"
+                          ? "bg-gray-800 text-gray-300"
+                          : cert.status === "In Progress"
+                            ? "bg-yellow-900 text-yellow-300"
+                            : "bg-green-900 text-green-300"
+                          }`}>{cert.status}</div>
+                        <button onClick={() => setSelectedCert(null)} className="text-neonGreen/60">✕</button>
+                      </div>
+                    </div>
+                    <div className="mt-4 text-neonGreen/70 font-mono text-sm">
+                      {cert.description}
+                    </div>
+                    {cert.credentialUrl ? (
+                      <div className="mt-4">
+                        <a href={cert.credentialUrl} target="_blank" rel="noreferrer" className="text-neonGreen/90 font-mono underline">View credential</a>
+                      </div>
+                    ) : (
+                      <div className="mt-4 text-neonGreen/50 text-xs font-mono">
+                        {cert.status === "Coming Soon"
+                          ? "Credential coming soon."
+                          : cert.status === "Obtained"
+                            ? "Credential link pending update."
+                            : "Work in progress — credential will be available soon."}
+                      </div>
+                    )}
                   </div>
                 );
               })()}
